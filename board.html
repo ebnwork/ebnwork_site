@@ -1,0 +1,129 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b2252"><meta name="color-scheme" content="light"><title>Marketplace, vacancies and adverts | EBN Work</title><meta name="description" content="Buy and sell land, homes and farm produce, find jobs and advertise your products across Kenya on EBN Work."><style>
+:root{color-scheme:light;--g:#0f2e6b;--gold:#f5b335;--ink:#0c1730;--mute:#4b5a78;--line:#dbe3f3;--soft:#eef3ff}*{box-sizing:border-box}
+body{margin:0;color:var(--ink);background:#fff;font:16px/1.55 "Helvetica Neue",Arial,sans-serif}a{color:inherit}.w{max-width:1040px;margin:0 auto;padding:0 20px}
+header{border-bottom:3px solid var(--gold);background:#fff;position:sticky;top:0;z-index:5}.nav{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:12px 20px;max-width:1040px;margin:0 auto}.nav b{font-size:19px}.nav a.b{text-decoration:none;font-weight:700;color:var(--g)}.nav .r{display:flex;gap:8px;align-items:center}
+.btn{display:inline-block;border:1.5px solid var(--g);color:var(--g);background:#fff;border-radius:999px;padding:10px 18px;font:700 15px "Helvetica Neue",Arial,sans-serif;text-decoration:none;cursor:pointer}.btn.f{background:var(--g);color:#fff}.btn.gold{background:var(--gold);border-color:var(--gold);color:#2b1d00}.btn:disabled{opacity:.6}
+.hero{background:linear-gradient(135deg,#0b2252,#1a46a3);color:#fff;padding:34px 0 26px}.hero h1{font-size:clamp(28px,6vw,42px);line-height:1.08;margin:0 0 8px;letter-spacing:-1px}.hero p{color:#d6e2ff;margin:0 0 16px;max-width:640px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}.tabs button{border:1.5px solid rgba(255,255,255,.5);background:transparent;color:#fff;border-radius:999px;padding:9px 18px;font:700 15px inherit;cursor:pointer}.tabs button.on{background:var(--gold);border-color:var(--gold);color:#2b1d00}
+.sf{display:flex;gap:8px;background:#fff;border-radius:999px;padding:5px 5px 5px 18px;max-width:560px}.sf input{flex:1;border:0;outline:0;font:16px inherit;min-width:0}.sf button{border:0;background:var(--g);color:#fff;border-radius:999px;padding:10px 20px;font:700 15px inherit;cursor:pointer}
+.safe{background:#fff8e6;border-left:4px solid var(--gold);border-radius:10px;padding:10px 14px;margin:18px 0 0;font-size:14px;color:#5a4300}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 6px}.chips button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 14px;font:600 14px inherit;cursor:pointer;color:var(--ink)}.chips button.on{background:var(--g);color:#fff;border-color:var(--g)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px;margin:14px 0 40px}
+.card{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff;cursor:pointer;display:block;text-align:left;padding:0;font:inherit;color:inherit;transition:transform .15s,box-shadow .15s}.card:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(15,46,107,.14)}
+.card img,.ph{width:100%;height:160px;object-fit:cover;display:flex;align-items:center;justify-content:center;font-size:52px;background:linear-gradient(135deg,var(--soft),#d3e0ff)}.ci{padding:12px 14px 14px}.ci b{display:block;line-height:1.25;margin:5px 0 3px}.ci .m{font-size:13px;color:var(--mute)}.pc{font-weight:800;color:var(--g);font-size:18px;margin-top:4px}
+.bd{display:inline-block;background:var(--gold);color:#2b1d00;border-radius:999px;padding:1px 9px;font-size:11px;font-weight:700}.bd.v{background:#dbe6ff;color:var(--g)}.bd.s{background:#e4f7ec;color:#13753f}
+.empty{text-align:center;color:var(--mute);padding:40px 10px}
+dialog{border:1px solid var(--line);border-radius:18px;padding:22px;max-width:520px;width:calc(100% - 28px);max-height:92vh;overflow:auto;background:#fff;color:var(--ink)}dialog::backdrop{background:rgba(0,0,0,.55)}dialog h3{margin:0 0 6px;font-size:22px}
+.gal img{width:100%;max-height:320px;object-fit:cover;border-radius:14px;display:block}.thumbs{display:flex;gap:6px;margin:6px 0 10px}.thumbs img{width:64px;height:64px;object-fit:cover;border-radius:10px;cursor:pointer;border:2px solid transparent}.thumbs img.on{border-color:var(--g)}
+.contact{background:var(--soft);border-radius:12px;padding:12px 14px;margin:12px 0}.m{color:var(--mute);font-size:14px}.acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+label{display:block;font-weight:700;font-size:14px;margin:12px 0 4px}label small{font-weight:400;color:var(--mute)}input,select,textarea{width:100%;padding:12px;border:1.5px solid var(--line);border-radius:12px;font:16px inherit;color:var(--ink);background:#fff}textarea{min-height:110px;resize:vertical}input:focus,select:focus,textarea:focus{outline:3px solid rgba(245,179,53,.5);border-color:var(--g)}
+.kinds{display:grid;gap:10px;margin:12px 0}.kind{display:flex;gap:12px;align-items:center;border:1.5px solid var(--line);border-radius:14px;padding:12px 14px;background:#fff;cursor:pointer;text-align:left;font:inherit;color:inherit}.kind:hover{border-color:var(--g)}.kind i{font-style:normal;font-size:30px}.kind b{display:block}.kind span{font-size:13px;color:var(--mute)}
+.pv{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}.pv div{position:relative}.pv img{width:78px;height:78px;object-fit:cover;border-radius:10px}.pv button{position:absolute;top:-6px;right:-6px;width:22px;height:22px;border-radius:50%;border:0;background:#b3261e;color:#fff;font-size:13px;cursor:pointer;line-height:1}
+.row{border-top:1px solid var(--line);padding:12px 0;display:flex;gap:10px;justify-content:space-between;align-items:center;flex-wrap:wrap}.err{color:#b3261e;font-weight:700;min-height:20px;margin-top:10px}
+#toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:#fff;border-radius:12px;padding:12px 18px;max-width:90%;z-index:30;display:none}
+</style></head><body>
+<header><div class="nav"><a class="b" href="./"><b>EBN Work</b></a><div class="r"><button class="btn" id="mine">My posts</button><button class="btn gold" id="post">Post</button></div></div></header>
+<div class="hero"><div class="w"><h1>Marketplace</h1><p>Buy and sell land, homes and farm produce, find your next team member, and advertise your products. Vacancies and listings cost KES 200, adverts KES 100, for 30 days.</p>
+<div class="tabs" id="tabs"><button data-k="listing">For sale</button><button data-k="vacancy">Vacancies</button><button data-k="ad">Adverts</button></div>
+<form class="sf" id="sf"><input id="q" placeholder="Search by title or place" maxlength="60"><button>Search</button></form></div></div>
+<div class="w"><div class="safe"><b>Stay safe.</b> EBN Work does not check posts. Never send money before you have seen the land, property or goods and checked the documents. Report anything suspicious.</div>
+<div class="chips" id="chips"></div><div class="grid" id="grid"></div><p class="empty" id="empty" hidden></p></div>
+<dialog id="dlg"></dialog><div id="toast" role="status"></div>
+<script>
+var API="https://ebn-work-api.onrender.com";
+var $=function(i){return document.getElementById(i)},tok=null,me=null,kind="listing",cat="",tm,pend=[];
+try{tok=localStorage.getItem("ebn_t")}catch(e){}
+var esc=function(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})};
+var kes=function(n){return"KES "+Number(n).toLocaleString("en-KE")};
+var CATS={listing:["Land","Apartments and houses","Agricultural produce","Vehicles","Other items"],vacancy:["Full-time","Part-time","Contract","Internship","Casual or daily work"],ad:["Products","Services","Food and drink","Property","Other"]};
+var FEE={vacancy:200,listing:200,ad:100},MAXP={vacancy:1,listing:4,ad:2},MINP={vacancy:0,listing:1,ad:1};
+var EMO={"Land":"🏞️","Apartments and houses":"🏠","Agricultural produce":"🌽","Vehicles":"🚗","Other items":"📦","Products":"🛍️","Services":"🛠️","Food and drink":"🍲","Property":"🏢","Other":"📣"};
+var TAG={listing:["For sale","bd"],vacancy:["Vacancy","bd v"],ad:["Sponsored","bd s"]};
+var KMAP={listing:"listings",vacancy:"vacancies",ad:"ads"};
+function toast(t){var e=$("toast");e.textContent=t;e.style.display="block";clearTimeout(toast.t);toast.t=setTimeout(function(){e.style.display="none"},3500)}
+async function api(p,o){o=o||{};var h={"Content-Type":"application/json"};if(tok)h.Authorization="Bearer "+tok;
+ var r=await fetch(API+"/api"+p,{method:o.m||"GET",headers:h,body:o.b?JSON.stringify(o.b):undefined}),j={};try{j=await r.json()}catch(e){}
+ if(!r.ok)throw new Error(j.error||"Something went wrong. Please try again.");return j}
+function emoji(p){return EMO[p.category]||(p.kind=="vacancy"?"💼":"📣")}
+function cover(p,big){return p.cover?'<img alt="" loading="lazy" src="'+API+'/api/images/'+p.cover+'">':'<div class="ph">'+emoji(p)+'</div>'}
+function priceTxt(p){return p.price_kes!=null&&p.price_kes!==""?(p.kind=="vacancy"?kes(p.price_kes)+" a month":kes(p.price_kes)):""}
+
+/* browsing */
+function tabs(){[].forEach.call($("tabs").children,function(b){b.className=b.dataset.k==kind?"on":""});
+ $("chips").innerHTML=['<button data-c="" class="'+(cat?"":"on")+'">All</button>'].concat(CATS[kind].map(function(c){return'<button data-c="'+esc(c)+'" class="'+(cat==c?"on":"")+'">'+esc(c)+'</button>'})).join("")}
+async function load(){$("grid").innerHTML="";$("empty").hidden=true;
+ try{var l=await api("/posts?kind="+kind+(cat?"&category="+encodeURIComponent(cat):"")+"&q="+encodeURIComponent($("q").value.trim()));
+  $("grid").innerHTML=l.map(function(p){return'<button class="card" data-id="'+p.id+'">'+cover(p)+'<div class="ci"><span class="'+TAG[p.kind][1]+'">'+TAG[p.kind][0]+'</span><b>'+esc(p.title)+'</b><div class="m">'+esc(p.business?p.business+" · ":"")+esc(p.location)+'</div>'+(priceTxt(p)?'<div class="pc">'+priceTxt(p)+'</div>':'')+'</div></button>'}).join("");
+  if(!l.length){$("empty").hidden=false;$("empty").textContent="Nothing here yet. Be the first to post."}}
+ catch(e){$("empty").hidden=false;$("empty").textContent="Loading... if this stays empty, please wait a minute and refresh."}}
+function pick(k){kind=k;cat="";tabs();load();try{history.replaceState(null,"","#"+KMAP[k])}catch(e){}}
+$("tabs").onclick=function(e){var b=e.target.closest("button");if(b)pick(b.dataset.k)};
+$("chips").onclick=function(e){var b=e.target.closest("button");if(b){cat=b.dataset.c;tabs();load()}};
+$("sf").onsubmit=function(e){e.preventDefault();load()};
+$("grid").onclick=function(e){var b=e.target.closest(".card");if(b)show(Number(b.dataset.id))};
+
+/* one post */
+async function show(id){var d=$("dlg");try{var p=await api("/posts/"+id)}catch(e){return toast(e.message)}
+ var im=p.images.map(function(i){return API+"/api/images/"+i}),c=p.contact,t=/^[+\d][\d\s()-]{6,}$/.test(c)?'<a href="tel:'+esc(c.replace(/[^\d+]/g,""))+'"><b>'+esc(c)+'</b></a>':/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(c)?'<a href="mailto:'+esc(c)+'"><b>'+esc(c)+'</b></a>':/^https?:\/\//i.test(c)?'<a href="'+esc(c)+'" target="_blank" rel="noopener noreferrer"><b>'+esc(c)+'</b></a>':'<b>'+esc(c)+'</b>';
+ d.innerHTML='<span class="'+TAG[p.kind][1]+'">'+TAG[p.kind][0]+'</span><h3>'+esc(p.title)+'</h3><div class="m">'+esc(p.business?p.business+" · ":"")+esc(p.location)+" · "+esc(p.category)+'</div>'+(priceTxt(p)?'<div class="pc">'+priceTxt(p)+'</div>':'')
+  +(im.length?'<div class="gal" style="margin-top:10px"><img id="mainimg" alt="" src="'+im[0]+'"></div>'+(im.length>1?'<div class="thumbs">'+im.map(function(u,i){return'<img alt="" data-u="'+u+'" class="'+(i?"":"on")+'" src="'+u+'">'}).join("")+'</div>':''):'<div class="ph" style="border-radius:14px;margin-top:10px">'+emoji(p)+'</div>')
+  +'<p style="white-space:pre-wrap">'+esc(p.description)+'</p>'+(p.extra?'<p class="m"><b>'+(p.kind=="vacancy"?"Deadline or how to apply: ":"More: ")+'</b>'+esc(p.extra)+'</p>':'')
+  +'<div class="contact"><div class="m">Contact</div>'+t+'</div><p class="m">Check everything yourself before you pay anyone. EBN Work does not verify posts.</p>'
+  +'<div class="acts"><button class="btn" id="rp">Report</button><button class="btn f" id="cl">Close</button></div>';
+ d.showModal();try{history.replaceState(null,"","#post-"+id)}catch(e){}
+ $("cl").onclick=function(){d.close()};d.onclose=function(){try{history.replaceState(null,"","#"+KMAP[kind])}catch(e){}};
+ $("rp").onclick=function(){var r=prompt("What is wrong with this post?");if(r&&r.trim().length>2)api("/posts/"+id+"/report",{m:"POST",b:{reason:r}}).then(function(){toast("Thank you. We will look at it.")}).catch(function(e){toast(e.message)})};
+ [].forEach.call(d.querySelectorAll(".thumbs img"),function(t){t.onclick=function(){$("mainimg").src=t.dataset.u;[].forEach.call(d.querySelectorAll(".thumbs img"),function(x){x.className=""});t.className="on"}})}
+
+/* posting */
+async function needLogin(){if(!tok){loginBox();return true}if(!me){try{me=await api("/me")}catch(e){tok=null;loginBox();return true}}return false}
+function loginBox(){var d=$("dlg");d.innerHTML='<h3>Log in to post</h3><p class="m">You need a free EBN Work account to post, so you can manage your posts.</p><div class="acts"><a class="btn f" href="./?login=1">Log in or sign up</a><button class="btn" id="cl">Close</button></div>';d.showModal();$("cl").onclick=function(){d.close()}}
+async function start(){if(await needLogin())return;var d=$("dlg");
+ d.innerHTML='<h3>What would you like to post?</h3><div class="kinds"><button class="kind" data-k="vacancy"><i>💼</i><div><b>A vacancy</b><span>Find employees. KES 200 for 30 days</span></div></button><button class="kind" data-k="listing"><i>🏡</i><div><b>Something for sale</b><span>Land, homes, produce, vehicles. KES 200 for 30 days</span></div></button><button class="kind" data-k="ad"><i>📣</i><div><b>An advert</b><span>Promote your products. KES 100 for 30 days</span></div></button></div><div class="acts"><button class="btn" id="cl">Cancel</button></div>';
+ d.showModal();$("cl").onclick=function(){d.close()};d.querySelector(".kinds").onclick=function(e){var b=e.target.closest(".kind");if(b)form(b.dataset.k)}}
+function form(k){pend=[];var d=$("dlg"),T={vacancy:["Job title","Company name","Monthly salary in KES","Describe the job: duties, requirements and where to work","Phone, email or link for applying","Application deadline"],listing:["What are you selling?","Your name or business","Price in KES","Describe it: size, condition, title deed or documents, what is included","Phone number buyers can call","Anything else buyers should know"],ad:["Headline for your advert","Business name","Price in KES","Describe your product or offer","Phone, email or link for customers","Offer details, for example opening hours"]}[k];
+ d.innerHTML='<form id="pf"><h3>'+{vacancy:"Post a vacancy",listing:"Post something for sale",ad:"Post an advert"}[k]+'</h3><div class="m">Fee: <b>'+kes(FEE[k])+'</b> for 30 days</div>'
+  +'<label>'+T[0]+'<input id="f_title" required minlength="5" maxlength="100"></label>'
+  +'<label>Category<select id="f_cat">'+CATS[k].map(function(c){return'<option>'+esc(c)+'</option>'}).join("")+'</select></label>'
+  +'<label>'+T[1]+' <small>(optional)</small><input id="f_biz" maxlength="80"></label>'
+  +'<label>Town or county<input id="f_loc" required maxlength="60" placeholder="e.g. Eldoret"></label>'
+  +'<label>'+T[2]+' <small>'+(k=="listing"?"":"(optional)")+'</small><input id="f_price" type="number" min="0" max="2000000000" inputmode="numeric"'+(k=="listing"?" required":"")+'></label>'
+  +'<label>'+T[3]+'<textarea id="f_desc" required minlength="20" maxlength="3000"></textarea></label>'
+  +'<label>'+T[4]+'<input id="f_con" required minlength="7" maxlength="80" value="'+esc(me&&k!="vacancy"?me.phone?"0"+String(me.phone).slice(3):"":"")+'"></label>'
+  +'<label>'+T[5]+' <small>(optional)</small><input id="f_extra" maxlength="200"></label>'
+  +'<label>Photos <small>('+(MINP[k]?"at least "+MINP[k]+", ":"")+'up to '+MAXP[k]+')</small><input id="f_ph" type="file" accept="image/*" '+(MAXP[k]>1?"multiple":"")+'></label><div class="pv" id="pv"></div>'
+  +'<label>M-Pesa number to pay with<input id="f_pay" type="tel" required value="'+esc(me&&me.phone?"0"+String(me.phone).slice(3):"")+'"></label>'
+  +'<p class="err" id="er" role="alert"></p><div class="acts"><button class="btn f" id="go" type="submit">Pay '+kes(FEE[k])+' and publish</button><button class="btn" type="button" id="cl">Cancel</button></div></form>';
+ d.showModal();$("cl").onclick=function(){d.close()};
+ $("f_ph").onchange=async function(e){var fs=[].slice.call(e.target.files);e.target.value="";$("er").textContent="";
+  for(var i=0;i<fs.length;i++){if(pend.length>=MAXP[k]){$("er").textContent="You can add up to "+MAXP[k]+" photo(s).";break}try{var b=await shrink(fs[i]);pend.push({b:b,u:URL.createObjectURL(b)})}catch(x){$("er").textContent=x.message}}
+  $("pv").innerHTML=pend.map(function(p,i){return'<div><img alt="" src="'+p.u+'"><button type="button" data-i="'+i+'" aria-label="Remove photo">×</button></div>'}).join("")};
+ $("pv").onclick=function(e){var b=e.target.closest("button");if(b){pend.splice(Number(b.dataset.i),1);$("f_ph").onchange({target:{files:[],value:""}})}};
+ $("pf").onsubmit=function(e){e.preventDefault();submit(k)}}
+function shrink(file){return new Promise(function(res,rej){var im=new Image(),u=URL.createObjectURL(file);im.onload=function(){var s=Math.min(1,900/Math.max(im.width,im.height)),c=document.createElement("canvas");c.width=Math.round(im.width*s);c.height=Math.round(im.height*s);c.getContext("2d").drawImage(im,0,0,c.width,c.height);URL.revokeObjectURL(u);var q=.75;(function t(){c.toBlob(function(b){if(!b)return rej(new Error("Could not read that photo."));if(b.size>280000&&q>.4){q-=.1;return t()}res(b)},"image/jpeg",q)})()};im.onerror=function(){rej(new Error("Could not read that photo. Please try a JPEG or PNG."))};im.src=u})}
+async function submit(k){var er=$("er"),go=$("go");er.textContent="";
+ if(pend.length<MINP[k])return er.textContent="Please add at least "+MINP[k]+" photo"+(MINP[k]>1?"s":"")+".";
+ go.disabled=true;go.textContent="Saving...";
+ try{var b={kind:k,title:$("f_title").value,category:$("f_cat").value,location:$("f_loc").value,description:$("f_desc").value,contact:$("f_con").value};
+  if($("f_biz").value.trim())b.business=$("f_biz").value;if($("f_extra").value.trim())b.extra=$("f_extra").value;if($("f_price").value!=="")b.price_kes=parseInt($("f_price").value,10);
+  var p=await api("/posts",{m:"POST",b:b});
+  for(var i=0;i<pend.length;i++){go.textContent="Uploading photo "+(i+1)+" of "+pend.length+"...";var r=await fetch(API+"/api/posts/"+p.id+"/images",{method:"POST",headers:{"Content-Type":"image/jpeg",Authorization:"Bearer "+tok},body:pend[i].b});if(!r.ok){var j={};try{j=await r.json()}catch(x){}throw new Error(j.error||"A photo could not be uploaded.")}}
+  await payFor(p.id,$("f_pay").value)}catch(e){er.textContent=e.message+(e.message.indexOf("M-Pesa")>-1?" Your post is saved. Open My posts to try paying again.":"");go.disabled=false;go.textContent="Pay "+kes(FEE[k])+" and publish"}}
+async function payFor(id,phone){var d=$("dlg");await api("/posts/"+id+"/pay",{m:"POST",b:{phone:phone}});
+ d.innerHTML='<h3>Check your phone</h3><p>Enter your M-Pesa PIN to pay. Your post goes live as soon as the payment is confirmed.</p><p class="m" id="wt">Waiting for payment...</p><div class="acts"><button class="btn" id="cl">Close</button></div>';$("cl").onclick=function(){d.close();load()};
+ for(var n=0;n<30;n++){await new Promise(function(r){setTimeout(r,4000)});if(!d.open)return;try{var l=await api("/me/posts"),m=l.filter(function(x){return x.id==id})[0];if(m&&m.status=="live"){d.innerHTML='<h3>Your post is live 🎉</h3><p>It will stay up for 30 days.</p><div class="acts"><button class="btn f" id="vw">View it</button><button class="btn" id="cl">Close</button></div>';$("cl").onclick=function(){d.close();load()};$("vw").onclick=function(){d.close();show(id)};return}}catch(e){}}
+ if(d.open&&$("wt"))$("wt").textContent="We have not received the payment yet. If you paid, wait a minute, then open My posts."}
+
+/* my posts */
+async function mine(){if(await needLogin())return;var d=$("dlg"),l;try{l=await api("/me/posts")}catch(e){return toast(e.message)}
+ d.innerHTML='<h3>My posts</h3>'+(l.length?l.map(function(p){var live=p.status=="live";return'<div class="row"><div><b>'+esc(p.title)+'</b><div class="m">'+TAG[p.kind][0]+" · "+(live?"Live until "+new Date(p.expires_at).toLocaleDateString("en-KE",{day:"numeric",month:"short"}):"Not paid yet")+'</div></div><div>'+(live?'<button class="btn" data-v="'+p.id+'">View</button> ':'<button class="btn f" data-p="'+p.id+'">Pay '+kes(p.fee_kes)+'</button> ')+'<button class="btn" data-r="'+p.id+'">Remove</button></div></div>'}).join(""):'<p class="m">You have no posts yet.</p>')+'<div class="acts"><button class="btn" id="cl">Close</button></div>';
+ d.showModal();$("cl").onclick=function(){d.close()};
+ d.onclick=function(e){var b=e.target.closest("button");if(!b)return;
+  if(b.dataset.v){d.close();show(Number(b.dataset.v))}
+  else if(b.dataset.r){if(confirm("Remove this post?"))api("/posts/"+b.dataset.r+"/remove",{m:"POST",b:{}}).then(function(){toast("Removed");mine();load()}).catch(function(x){toast(x.message)})}
+  else if(b.dataset.p){var ph=prompt("M-Pesa number to pay with",me&&me.phone?"0"+String(me.phone).slice(3):"");if(ph)payFor(Number(b.dataset.p),ph).catch(function(x){toast(x.message)})}}}
+$("post").onclick=start;$("mine").onclick=mine;
+
+/* start */
+(function(){var h=location.hash.replace("#",""),m=h.match(/^post-(\d+)$/);for(var k in KMAP)if(KMAP[k]==h)kind=k;tabs();load();if(m)show(Number(m[1]));else if(h=="mine")mine()})();
+</script></body></html>
