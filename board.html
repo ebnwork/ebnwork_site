@@ -126,4 +126,5 @@ $("post").onclick=start;$("mine").onclick=mine;
 
 /* start */
 (function(){var h=location.hash.replace("#",""),m=h.match(/^post-(\d+)$/);for(var k in KMAP)if(KMAP[k]==h)kind=k;tabs();load();if(m)show(Number(m[1]));else if(h=="mine")mine()})();
-</script></body></html>
+</script><script>(function(){try{var v=localStorage.getItem("ebn_v");if(!v){v=Math.random().toString(36).slice(2,12)+Date.now().toString(36);localStorage.setItem("ebn_v",v)}fetch("https://ebn-work-api.onrender.com/api/hit",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({p:location.pathname,v:v}),keepalive:true}).catch(function(){})}catch(e){}})();</script>
+</body></html>
