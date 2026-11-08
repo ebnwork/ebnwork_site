@@ -35,9 +35,9 @@ var $=function(i){return document.getElementById(i)},tok=null,me=null,kind="list
 try{tok=localStorage.getItem("ebn_t")}catch(e){}
 var esc=function(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})};
 var kes=function(n){return"KES "+Number(n).toLocaleString("en-KE")};
-var CATS={listing:["Land","Apartments and houses","Agricultural produce","Vehicles","Other items"],vacancy:["Full-time","Part-time","Contract","Internship","Casual or daily work"],ad:["Products","Services","Food and drink","Property","Other"]};
+var CATS={listing:["Land","Apartments and houses","Agricultural produce","Vehicles","African products (export)","Other items"],vacancy:["Full-time","Part-time","Contract","Internship","Casual or daily work"],ad:["Products","Services","Food and drink","Property","Other"]};
 var FEE={vacancy:200,listing:200,ad:100},MAXP={vacancy:1,listing:4,ad:2},MINP={vacancy:0,listing:1,ad:1};
-var EMO={"Land":"🏞️","Apartments and houses":"🏠","Agricultural produce":"🌽","Vehicles":"🚗","Other items":"📦","Products":"🛍️","Services":"🛠️","Food and drink":"🍲","Property":"🏢","Other":"📣"};
+var EMO={"Land":"🏞️","Apartments and houses":"🏠","Agricultural produce":"🌽","Vehicles":"🚗","African products (export)":"☕","Other items":"📦","Products":"🛍️","Services":"🛠️","Food and drink":"🍲","Property":"🏢","Other":"📣"};
 var TAG={listing:["For sale","bd"],vacancy:["Vacancy","bd v"],ad:["Sponsored","bd s"]};
 var KMAP={listing:"listings",vacancy:"vacancies",ad:"ads"};
 function toast(t){var e=$("toast");e.textContent=t;e.style.display="block";clearTimeout(toast.t);toast.t=setTimeout(function(){e.style.display="none"},3500)}
@@ -95,6 +95,7 @@ function form(k){pend=[];var d=$("dlg"),T={vacancy:["Job title","Company name","
   +'<label>M-Pesa number to pay with<input id="f_pay" type="tel" required value="'+esc(me&&me.phone?"0"+String(me.phone).slice(3):"")+'"></label>'
   +'<p class="err" id="er" role="alert"></p><div class="acts"><button class="btn f" id="go" type="submit">Pay '+kes(FEE[k])+' and publish</button><button class="btn" type="button" id="cl">Cancel</button></div></form>';
  d.showModal();$("cl").onclick=function(){d.close()};
+ if(k=="listing"){var upd=function(){var x=$("f_cat").value=="African products (export)";$("f_desc").parentNode.firstChild.nodeValue=x?"Tell the story: where it is grown or made, who makes it, and what is special":T[3];$("f_extra").parentNode.firstChild.nodeValue=(x?"Minimum order, packaging and shipping notes":T[5])+" "};$("f_cat").onchange=upd;if(location.hash=="#export"){$("f_cat").value="African products (export)"}upd()}
  $("f_ph").onchange=async function(e){var fs=[].slice.call(e.target.files);e.target.value="";$("er").textContent="";
   for(var i=0;i<fs.length;i++){if(pend.length>=MAXP[k]){$("er").textContent="You can add up to "+MAXP[k]+" photo(s).";break}try{var b=await shrink(fs[i]);pend.push({b:b,u:URL.createObjectURL(b)})}catch(x){$("er").textContent=x.message}}
   $("pv").innerHTML=pend.map(function(p,i){return'<div><img alt="" src="'+p.u+'"><button type="button" data-i="'+i+'" aria-label="Remove photo">×</button></div>'}).join("")};
