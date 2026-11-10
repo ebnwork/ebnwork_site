@@ -1,0 +1,23 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b2252"><meta name="color-scheme" content="light"><title>Find freelancers | EBN Work</title><meta name="description" content="Browse freelancers on EBN Work. ID verified freelancers with a real face and a video intro appear first."><style>
+:root{color-scheme:light;--g:#0f2e6b;--gold:#f5b335;--ink:#0c1730;--mute:#4b5a78;--line:#dbe3f3;--soft:#eef3ff;--ok:#13753f}*{box-sizing:border-box}
+body{margin:0;color:var(--ink);background:#fff;font:16px/1.55 "Helvetica Neue",Arial,sans-serif}a{color:inherit}.w{max-width:1040px;margin:0 auto;padding:0 20px}
+header{border-bottom:3px solid var(--gold);background:#fff;position:sticky;top:0;z-index:5}.nav{display:flex;justify-content:space-between;align-items:center;padding:12px 20px;max-width:1040px;margin:0 auto}.nav a{text-decoration:none;font-weight:700;color:var(--g)}
+.hero{background:linear-gradient(135deg,#0b2252,#1a46a3);color:#fff;padding:30px 0 24px}.hero h1{font-size:clamp(26px,6vw,40px);line-height:1.1;margin:0 0 8px;letter-spacing:-1px}.hero p{color:#d6e2ff;margin:0 0 14px;max-width:620px}
+.sf{display:flex;gap:8px;background:#fff;border-radius:999px;padding:5px 5px 5px 18px;max-width:560px}.sf input{flex:1;border:0;outline:0;font:16px inherit;min-width:0}.sf button{border:0;background:var(--g);color:#fff;border-radius:999px;padding:10px 20px;font:700 15px inherit;cursor:pointer}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin:20px 0 40px}.card{border:1px solid var(--line);border-radius:18px;padding:16px;text-decoration:none;color:inherit;display:flex;gap:14px;align-items:flex-start;transition:transform .15s,box-shadow .15s}.card:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(15,46,107,.14)}
+.av{width:64px;height:64px;border-radius:50%;object-fit:cover;background:var(--soft);display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:800;color:var(--g);flex:none}.card b{display:block;line-height:1.2}.m{color:var(--mute);font-size:14px}.pill{display:inline-block;border-radius:999px;padding:2px 10px;font-weight:800;font-size:12px;margin:4px 0}.pill.ok{background:#e4f7ec;color:var(--ok)}.pill.no{background:#e8ebf1;color:#4b5a78}
+.empty{text-align:center;color:var(--mute);padding:40px 10px}
+</style></head><body>
+<header><div class="nav"><a href="./"><b>EBN Work</b></a><a href="./?post=1">Post a job</a></div></header>
+<div class="hero"><div class="w"><h1>Find freelancers</h1><p>Freelancers with a real face and a checked ID appear first. Open a profile to watch their video intro.</p><form class="sf" id="sf"><input id="q" placeholder="Search by skill, title or place" maxlength="60"><button>Search</button></form></div></div>
+<div class="w"><div class="grid" id="grid"></div><p class="empty" id="empty">Loading... the first load can take up to a minute.</p></div>
+<script>
+var API="https://ebn-work-api.onrender.com",$=function(i){return document.getElementById(i)};
+var esc=function(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})};
+async function load(){$("grid").innerHTML="";$("empty").hidden=false;$("empty").textContent="Loading...";
+ try{var r=await fetch(API+"/api/freelancers?q="+encodeURIComponent($("q").value.trim())),l=await r.json();if(!r.ok)throw new Error("x");
+  $("grid").innerHTML=l.map(function(p){return'<a class="card" href="profile.html?id='+p.id+'">'+(p.avatar?'<img class="av" alt="" loading="lazy" src="'+API+'/api/media/'+p.avatar+'">':'<div class="av">'+esc(p.name.charAt(0).toUpperCase())+'</div>')+'<div><b>'+esc(p.name)+'</b><div class="m">'+esc(p.title||"")+'</div>'+(p.verified?'<span class="pill ok">&#10003; ID VERIFIED</span>':'<span class="pill no">Not Verified Yet</span>')+'<div class="m">'+(p.county?'&#128205; '+esc(p.county)+' · ':'')+(p.rating?'&#9733; '+p.rating+' · ':'')+p.jobs_done+' job'+(p.jobs_done==1?'':'s')+' done</div></div></a>'}).join("");
+  $("empty").hidden=!!l.length;if(!l.length)$("empty").textContent="No freelancers found yet."}
+ catch(e){$("empty").hidden=false;$("empty").textContent="We could not load the list. Please wait a minute and refresh."}}
+$("sf").onsubmit=function(e){e.preventDefault();load()};load();
+</script></body></html>

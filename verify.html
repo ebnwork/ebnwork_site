@@ -1,0 +1,62 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b2252"><meta name="color-scheme" content="light"><meta name="robots" content="noindex"><title>Get ID Verified | EBN Work</title><style>
+:root{color-scheme:light;--g:#0f2e6b;--gold:#f5b335;--ink:#0c1730;--mute:#4b5a78;--line:#dbe3f3;--soft:#eef3ff;--ok:#13753f}*{box-sizing:border-box}
+body{margin:0;color:var(--ink);background:var(--soft);font:16px/1.55 "Helvetica Neue",Arial,sans-serif}a{color:var(--g)}
+header{border-bottom:3px solid var(--gold);background:#fff}.nav{display:flex;justify-content:space-between;align-items:center;padding:12px 20px;max-width:720px;margin:0 auto}.nav a{text-decoration:none;font-weight:700}
+main{max-width:720px;margin:0 auto;padding:22px 18px 70px}h1{font-size:clamp(26px,6vw,36px);line-height:1.1;margin:0 0 6px;color:var(--g);letter-spacing:-.5px}.lead{color:var(--mute);margin:0 0 18px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px;margin:12px 0}.card h2{margin:0 0 4px;font-size:19px;display:flex;align-items:center;gap:10px}.n{display:inline-flex;width:30px;height:30px;border-radius:50%;background:var(--gold);color:#2b1d00;font-weight:800;align-items:center;justify-content:center;flex:none}.n.done{background:var(--ok);color:#fff}
+.m{color:var(--mute);font-size:14px}.btn{display:inline-block;border:1.5px solid var(--g);color:var(--g);background:#fff;border-radius:999px;padding:11px 20px;font:700 15px inherit;text-decoration:none;cursor:pointer;margin:8px 8px 0 0}.btn.f{background:var(--g);color:#fff}.btn.r{background:#b3261e;border-color:#b3261e;color:#fff}.btn:disabled{opacity:.5}
+.seg{display:flex;gap:8px;margin:10px 0}.seg label{flex:1;border:1.5px solid var(--line);border-radius:12px;padding:10px;text-align:center;font-weight:700;cursor:pointer}.seg input{display:none}.seg input:checked+span{color:var(--g)}.seg label:has(input:checked){border-color:var(--g);background:var(--soft)}
+video{width:100%;border-radius:14px;background:#000;margin-top:10px;max-height:340px}.say{background:#fff8e6;border-left:4px solid var(--gold);border-radius:10px;padding:10px 14px;font-size:15px;margin-top:10px}
+.big{text-align:center}.big .tick{font-size:54px}.pill{display:inline-block;background:#e4f7ec;color:var(--ok);border-radius:999px;padding:6px 16px;font-weight:800;letter-spacing:.5px}.warn{background:#fdecea;border-left:4px solid #b3261e;border-radius:10px;padding:10px 14px;margin:12px 0;font-size:15px}
+.err{color:#b3261e;font-weight:700;min-height:20px;margin-top:8px}.chk{display:flex;gap:10px;align-items:flex-start;font-size:15px;margin-top:12px}.chk input{margin-top:4px;width:20px;height:20px;flex:none}.timer{font-size:28px;font-weight:800;color:#b3261e}
+.priv{font-size:14px;color:var(--mute);margin-top:14px}
+</style></head><body>
+<header><div class="nav"><a href="./"><b>EBN Work</b></a><a href="./">&larr; Home</a></div></header>
+<main id="m"><h1>Get ID Verified</h1><p class="lead">Show clients a real face and a real ID. Verified freelancers get a green badge and appear first.</p><div id="app"><p class="m">Loading...</p></div>
+<p class="priv">&#128274; Your ID photo and selfie are seen only by EBN Work staff to check who you are, and are <b>deleted as soon as we decide</b>. Your video intro is shown on your profile only after you are verified.</p></main>
+<script>
+var API="https://ebn-work-api.onrender.com",tok=null,me=null,S={},$=function(i){return document.getElementById(i)},stream=null,rec=null,chunks=[],blob=null,timer=null;
+try{tok=localStorage.getItem("ebn_t")}catch(e){}
+var esc=function(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})};
+async function api(p,o){o=o||{};var h={"Content-Type":"application/json"};if(tok)h.Authorization="Bearer "+tok;var r=await fetch(API+"/api"+p,{method:o.m||"GET",headers:h,body:o.b?JSON.stringify(o.b):undefined}),j={};try{j=await r.json()}catch(e){}if(!r.ok)throw new Error(j.error||"Something went wrong. Please try again.");return j}
+async function raw(p,type,body){var r=await fetch(API+"/api"+p,{method:"POST",headers:{"Content-Type":type,Authorization:"Bearer "+tok},body:body}),j={};try{j=await r.json()}catch(e){}if(!r.ok)throw new Error(j.error||"Upload failed. Please try again.");return j}
+function shrink(file,max,limit){return new Promise(function(res,rej){var im=new Image(),u=URL.createObjectURL(file);im.onload=function(){var s=Math.min(1,max/Math.max(im.width,im.height)),c=document.createElement("canvas");c.width=Math.round(im.width*s);c.height=Math.round(im.height*s);c.getContext("2d").drawImage(im,0,0,c.width,c.height);URL.revokeObjectURL(u);var q=.82;(function t(){c.toBlob(function(b){if(!b)return rej(new Error("Could not read that photo."));if(b.size>limit&&q>.4){q-=.1;return t()}res(b)},"image/jpeg",q)})()};im.onerror=function(){rej(new Error("Could not read that photo. Please try a JPEG or PNG."))};im.src=u})}
+function say(t){var e=$("er");if(e)e.textContent=t||""}
+async function init(){if(!tok)return gate("Please log in first.");try{me=await api("/me")}catch(e){return gate("Please log in again.")}
+ if(me.role!="freelancer")return gate("ID verification is for freelancer accounts.",true);await refresh()}
+function gate(t,noLogin){$("app").innerHTML='<div class="card big"><p>'+esc(t)+'</p>'+(noLogin?'':'<a class="btn f" href="./?login=1">Log in or sign up</a>')+'</div>'}
+async function refresh(){try{S=await api("/me/verification")}catch(e){return gate(e.message)}render()}
+function render(){var a=$("app");
+ if(S.verified){a.innerHTML='<div class="card big"><div class="tick">&#9989;</div><span class="pill">&#10003; ID VERIFIED</span><p>Your profile now shows the green badge, and your video intro is public.</p><a class="btn f" href="profile.html?id='+me.id+'">View my profile</a></div>';return}
+ if(S.status=="pending"){a.innerHTML='<div class="card big"><div class="tick">&#9203;</div><h2 style="justify-content:center">Under review</h2><p>We received your ID, selfie and video. We compare them and email you the result. You do not need to do anything else.</p><a class="btn" href="profile.html?id='+me.id+'">View my profile</a></div>';return}
+ var h='';if(S.status=="rejected")h+='<div class="warn"><b>Not approved this time.</b> '+esc(S.reject_reason||"")+'<br>Please redo the steps below.</div>';
+ h+='<div class="card"><h2><span class="n'+(S.has_id?" done":"")+'">'+(S.has_id?"&#10003;":"1")+'</span>Your ID or passport</h2><p class="m">Take a clear photo of the front of your National ID, or the photo page of your passport. All four corners and all text must be readable.</p>'
+  +'<div class="seg"><label><input type="radio" name="dt" value="national_id" checked><span>National ID</span></label><label><input type="radio" name="dt" value="passport"><span>Passport</span></label></div>'
+  +'<label class="btn f" for="f_id">'+(S.has_id?"Replace photo":"Take or choose photo")+'</label><input id="f_id" type="file" accept="image/*" capture="environment" hidden>'+(S.has_id?' <span class="m">&#10003; Uploaded</span>':'')+'</div>';
+ h+='<div class="card"><h2><span class="n'+(S.has_selfie?" done":"")+'">'+(S.has_selfie?"&#10003;":"2")+'</span>Your selfie</h2><p class="m">Look straight at the camera in good light. No hat or sunglasses. We check that your face matches your ID.</p><label class="btn f" for="f_se">'+(S.has_selfie?"Retake selfie":"Take selfie")+'</label><input id="f_se" type="file" accept="image/*" capture="user" hidden>'+(S.has_selfie?' <span class="m">&#10003; Uploaded</span>':'')+'</div>';
+ h+='<div class="card"><h2><span class="n'+(S.has_video?" done":"")+'">'+(S.has_video?"&#10003;":"3")+'</span>Your 30-second video intro</h2><p class="m">Clients watch this before they hire you.</p><div class="say"><b>Say:</b> "My name is <i>your name</i>. I am a <i>your skill</i>. I have <i>number</i> years of experience."</div>'
+  +'<div id="vbox"><video id="live" playsinline muted hidden></video><video id="play" playsinline controls hidden></video><div class="timer" id="tm" hidden></div></div><div id="vbtn"><button class="btn f" id="b_cam">'+(S.has_video?"Record a new video":"Open camera")+'</button></div>'+(S.has_video?'<p class="m">&#10003; Video uploaded</p>':'')+'</div>';
+ var ready=S.has_id&&S.has_selfie&&S.has_video;
+ h+='<div class="card"><label class="chk"><input type="checkbox" id="cons"><span>I agree that EBN Work may check my ID, selfie and video to confirm who I am. My ID photo and selfie are deleted after the check, and my video will show on my profile once I am verified.</span></label><button class="btn f" id="b_go" '+(ready?'':'disabled')+'>Submit for review</button><p class="m">'+(ready?"":"Finish all 3 steps to continue.")+'</p><div class="err" id="er" role="alert"></div></div>';
+ a.innerHTML=h;
+ $("f_id").onchange=function(e){up(e,"id")};$("f_se").onchange=function(e){up(e,"se")};$("b_cam").onclick=openCam;$("b_go").onclick=submit}
+async function up(e,k){var f=e.target.files[0];if(!f)return;say("Uploading...");try{var b=await shrink(f,k=="id"?1400:900,k=="id"?470000:400000);
+  if(k=="id")await raw("/me/verification/id?type="+document.querySelector('input[name=dt]:checked').value,"image/jpeg",b);else await raw("/me/verification/selfie","image/jpeg",b);
+  await refresh()}catch(x){say(x.message)}}
+function stopCam(){if(stream){stream.getTracks().forEach(function(t){t.stop()});stream=null}clearInterval(timer)}
+async function openCam(){say("");if(!window.MediaRecorder||!navigator.mediaDevices)return say("This browser cannot record video here. Please open this page in Chrome.");
+ try{stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:"user",width:{ideal:640},height:{ideal:480}},audio:true})}catch(x){return say("Please allow camera and microphone access, then try again.")}
+ var l=$("live");l.srcObject=stream;l.hidden=false;l.play();$("play").hidden=true;$("vbtn").innerHTML='<button class="btn r" id="b_rec">&#9679; Start recording (30 seconds)</button>';$("b_rec").onclick=record}
+function record(){var types=["video/webm;codecs=vp8,opus","video/webm","video/mp4"],mt=types.filter(function(t){return MediaRecorder.isTypeSupported(t)})[0];
+ try{rec=new MediaRecorder(stream,{mimeType:mt,videoBitsPerSecond:350000,audioBitsPerSecond:32000})}catch(x){return say("Could not start recording on this phone.")}
+ chunks=[];rec.ondataavailable=function(e){if(e.data&&e.data.size)chunks.push(e.data)};rec.onstop=done;rec.start(1000);
+ var left=30,tm=$("tm");tm.hidden=false;tm.textContent="0:30";$("vbtn").innerHTML='<button class="btn" id="b_stop">Stop</button>';$("b_stop").onclick=function(){rec.stop()};
+ timer=setInterval(function(){left--;tm.textContent="0:"+(left<10?"0":"")+left;if(left<=0)rec.stop()},1000)}
+function done(){clearInterval(timer);var type=(rec.mimeType||"video/webm").split(";")[0];blob=new Blob(chunks,{type:type});stopCam();$("tm").hidden=true;$("live").hidden=true;
+ if(blob.size>3900000){say("That video is too large. Please record again and keep it to 30 seconds.");return openCam()}
+ var p=$("play");p.src=URL.createObjectURL(blob);p.hidden=false;$("vbtn").innerHTML='<button class="btn f" id="b_use">Use this video</button><button class="btn" id="b_again">Record again</button>';
+ $("b_use").onclick=sendVideo;$("b_again").onclick=openCam}
+async function sendVideo(){say("Uploading video...");$("b_use").disabled=true;try{await raw("/me/verification/video",blob.type,blob);await refresh()}catch(x){say(x.message);$("b_use").disabled=false}}
+async function submit(){if(!$("cons").checked)return say("Please tick the box to agree.");$("b_go").disabled=true;say("Sending...");try{await api("/me/verification/submit",{m:"POST",b:{consent:true}});await refresh()}catch(x){say(x.message);$("b_go").disabled=false}}
+window.addEventListener("pagehide",stopCam);init();
+</script></body></html>
